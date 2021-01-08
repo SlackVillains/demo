@@ -20,6 +20,30 @@ import javax.persistence.Table;
 public class TransactionDetails implements Serializable{
 
 
+	public String getTxnId() {
+		return txnId;
+	}
+
+	public void setTxnId(String txnId) {
+		this.txnId = txnId;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public String getCrDbt() {
+		return crDbt;
+	}
+
+	public void setCrDbt(String crDbt) {
+		this.crDbt = crDbt;
+	}
+
 	/**
 	 * 
 	 */
@@ -29,27 +53,21 @@ public class TransactionDetails implements Serializable{
 	private String acctNum;
 
 	@Column(name = "AMOUNT")
-	private String txn_number;
+	private double amount;
 
 	@Column(name = "CR_DBT")
-	private double crDbt;
+	private String crDbt;
 
 	@Column(name = "NARRATIVE")
 	private String narrative;
 
 	@Column(name = "VALUE_DATE")
 	private Date valueDate;
-
+	
+	@Column(name="TXN_ID")
 	@Id
-	private String id;
+	private String txnId;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getAcctNum() {
 		return acctNum;
@@ -59,13 +77,6 @@ public class TransactionDetails implements Serializable{
 		this.acctNum = acctNum;
 	}
 
-	public String getTxn_number() {
-		return txn_number;
-	}
-
-	public void setTxn_number(String txn_number) {
-		this.txn_number = txn_number;
-	}
 
 	public String getNarrative() {
 		return narrative;
@@ -83,18 +94,11 @@ public class TransactionDetails implements Serializable{
 		this.valueDate = valueDate;
 	}
 
-	public double getCrDbt() {
-		return crDbt;
-	}
-
-	public void setCrDbt(double crDbt) {
-		this.crDbt = crDbt;
-	}
-
 	@Override
 	public String toString() {
-		return "TransactionDetails [acctNum=" + acctNum + ", txn_number=" + txn_number + ", crDbt=" + crDbt
-				+ ", narrative=" + narrative + ", valueDate=" + valueDate + ", id=" + id + "]";
+		return "TransactionDetails [acctNum=" + acctNum + ", amount=" + amount + ", crDbt=" + crDbt + ", narrative="
+				+ narrative + ", valueDate=" + valueDate + "]";
 	}
+
 
 }
