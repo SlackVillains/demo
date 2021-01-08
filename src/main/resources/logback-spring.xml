@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="springLocation" source="spring.config.location"/>
+    <if condition='isDefined("springLocation")'>
+        <then>
+            <property resource="${springLocation}/application.properties"/>
+            <property resource="${springLocation}/application-default.properties"/>
+        </then>
+        <else>
+            <property resource="application.properties"/>
+            <property resource="application-default.properties"/>
+        </else>
+    </if>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${logging.pattern}</Pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="${logging.level.root:-ERROR}">
+        <if condition='property("psp.logging.writeToFile").equalsIgnoreCase("TRUE")'>
+            <then>
+                <appender-ref ref="FILE"/>
+            </then>
+            <else>
+                <appender-ref ref="STDOUT"/>
+            </else>
+        </if>
+    </root>
+</configuration>
