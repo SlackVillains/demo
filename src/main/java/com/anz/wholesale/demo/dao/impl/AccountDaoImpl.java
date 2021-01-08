@@ -29,6 +29,9 @@ public class AccountDaoImpl implements IAccountDao {
 		return entityMgr.createQuery("SELECT a FROM Account a", Account.class).getResultList();
 	}
 	
+	/**
+	 * Retrieve all account details pertaining to an account
+	 */
 	@Override
 	public List<Account> getAccountWithTransaction(String accountNum) throws TechnicalException {
 		try {
