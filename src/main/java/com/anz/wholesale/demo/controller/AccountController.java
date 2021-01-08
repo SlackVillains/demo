@@ -27,6 +27,7 @@ public class AccountController {
 	
 	@GetMapping(path="/", produces = "application/json")
 	public AccountResponse getAllAccounts() {
+		logger.debug("Recieved message in getAccountList");
 		AccountResponse response = new AccountResponse();
 		
 		try {
@@ -42,8 +43,9 @@ public class AccountController {
 		return response;
 	}
 	
-	@GetMapping("/getAcctTxns/{accountNum}")
+	@GetMapping(path="/getAcctTxns/{accountNum}", produces = "application/json")
 	public AccountResponse getAcctTrans(@PathVariable String acctNum) {
+		logger.debug("Recieved message in getAcctTrans");
 		AccountResponse response = new AccountResponse();
 		
 		return response;
